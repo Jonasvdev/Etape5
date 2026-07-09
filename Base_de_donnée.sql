@@ -1,0 +1,41 @@
+ALTER TABLE users ADD COLUMN is_admin TINYINT(1) NOT NULL DEFAULT 0;
+
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    image VARCHAR(255) NOT NULL
+);
+
+
+
+// categories
+
+
+
+
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    parent_id INT NULL,
+    FOREIGN KEY (parent_id) REFERENCES categories(id) ON DELETE CASCADE
+);
+
+ALTER TABLE products ADD COLUMN category_id INT NULL;
+ALTER TABLE products ADD FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE SET NULL;
+
+
+
+ALTER TABLE users ADD COLUMN avatar VARCHAR(255) NULL;
+ALTER TABLE users ADD COLUMN oauth_provider VARCHAR(20) NULL;
+ALTER TABLE users ADD COLUMN oauth_id VARCHAR(255) NULL;
+ALTER TABLE users MODIFY password VARCHAR(255) NULL;
+
+CREATE TABLE password_resets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    token VARCHAR(64) NOT NULL,
+    expires_at DATETIME NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);

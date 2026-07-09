@@ -62,6 +62,55 @@ a:focus {
 
 
 
+.product-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    padding: 0;
+    margin: 2rem auto;
+    max-width: 1200px;
+}
+
+.product-card {
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.product-card .price {
+    font-weight: bold;
+}
+
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0;
+}
+
+.pagination a {
+    padding: 0.4rem 0.8rem;
+}
+
+.pagination a[aria-current="page"] {
+    background-color: #16213e;
+}
+
+@media (max-width: 480px) {
+    .product-list {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 
 

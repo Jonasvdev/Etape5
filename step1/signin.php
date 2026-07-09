@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $_SESSION['user_id'] = $userData['id'];
     $_SESSION['username'] = $userData['username'];
+    $_SESSION['is_admin'] = $userData['is_admin'];
     header('Location: admin.php');
     exit;
 }
@@ -70,8 +71,16 @@ unset($_SESSION['signin_errors']);
 
         <button type="submit">Se connecter</button>
     </form>
+
+    // LIEN DE Modification de mot de passe oublié
+
+    <a href="forgot_password.php">Mot de passe oublié ?</a>
+
+
 </body>
 </html>
+
+
 
 
 
