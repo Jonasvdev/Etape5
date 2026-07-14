@@ -12,9 +12,11 @@ $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_FILES['avatar']) || $_FILES['avatar']['error'] === UPLOAD_ERR_NO_FILE) {
-        $errors[] = "Veuillez sélectionner une image.";
+        $errors[] = " Veuillez sélectionner une image.";
+
     } elseif ($_FILES['avatar']['error'] !== UPLOAD_ERR_OK) {
         $errors[] = "Erreur lors de l'envoi de l'image.";
+        
     } else {
         $allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
         $fileType = mime_content_type($_FILES['avatar']['tmp_name']);
@@ -38,7 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $userData = $user->findById($_SESSION['user_id']);
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -46,6 +51,7 @@ $userData = $user->findById($_SESSION['user_id']);
     <title>Mon profil</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <h1>Mon profil</h1>
     <a href="index.php">Retour à l'accueil</a>

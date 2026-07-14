@@ -35,12 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
         if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
             $errors[] = "Erreur lors de l'envoi de l'image.";
+            
         } else {
             $allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
             $fileType = mime_content_type($_FILES['image']['tmp_name']);
 
             if (!in_array($fileType, $allowedTypes, true)) {
                 $errors[] = "L'image doit être au format JPEG, PNG ou WebP.";
+
             } else {
                 $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
                 $imageName = uniqid('product_', true) . '.' . $extension;
@@ -61,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productData['price'] = $price;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

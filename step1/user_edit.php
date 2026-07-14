@@ -36,7 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $userData['username'] = $username;
     $userData['email'] = $email;
-    $userData['is_admin'] = $isAdmin ? 1 : 0;
+    $userData['is_admin'] = $isAdmin ? 1 : 0;   // Sous forme de 1 ou 0 pour la base de données qui donne un bouleen
+
 }
 
 ?>
@@ -50,9 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <h1>Modifier l'utilisateur</h1>
 
     <?php if (!empty($errors)): ?>
+        
         <ul class="errors">
             <?php foreach ($errors as $error): ?>
                 <li><?= htmlspecialchars($error) ?></li>
